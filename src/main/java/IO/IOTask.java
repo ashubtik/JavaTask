@@ -4,7 +4,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Scanner;
 
 public class IOTask {
     public static void main(String[] args) {
@@ -27,28 +26,41 @@ public class IOTask {
                 }
             } else if (file.exists() && file.isFile()) {
 
+                long numberOfDirs = 0;
                 try (FileReader reader = new FileReader(element);
                      BufferedReader bufferedReader = new BufferedReader(reader)) {
-                    long numberOfDirs = bufferedReader.lines()
+                    numberOfDirs = bufferedReader.lines()
                             .filter(line -> line.startsWith("|-----["))
                             .count();
                     System.out.println(numberOfDirs + " dirs");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                double numberOfFiles = 0;
                 try (FileReader reader = new FileReader(element);
                      BufferedReader bufferedReader = new BufferedReader(reader)) {
-                    long numberOfFiles = bufferedReader.lines()
+                    numberOfFiles = bufferedReader.lines()
                             .filter(line -> line.endsWith(".mp3"))
                             .count();
-                    System.out.println(numberOfFiles + " files");
+                    int result = (int) Math.round(numberOfFiles);
+                    System.out.println(result + " files");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Scanner scanner = new Scanner(element);
-                String line = scanner.nextLine();
-
+                try (FileReader reader = new FileReader(element);
+                     BufferedReader bufferedReader = new BufferedReader(reader)) {
+                    double averageLength = bufferedReader.lines()
+                            .filter(line -> line.endsWith(".mp3"))
+                            .mapToInt(String::length)
+                            .average()
+                            .getAsDouble();
+                    System.out.println("Average file length = " + averageLength);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+                double averageNumberOfFiles = numberOfFiles / numberOfDirs;
+                System.out.format("%.3f", averageNumberOfFiles);
+            }
             }
         }
     }
