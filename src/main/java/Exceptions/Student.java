@@ -1,56 +1,108 @@
-package Exceptions;
+package exceptions;
 
-import java.util.Objects;
+import exceptions.exeptions.*;
+import exceptions.faculties.FacultyName;
+import exceptions.groups.Group;
+import exceptions.groups.GroupName;
+import exceptions.subjects.Category;
+import exceptions.subjects.Subject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Student {
     String name;
-    String faculty;
-    String group;
-    public int warCraftGrade;
+    private List<Subject> subjects;
+    private FacultyName facultyName;
+    private GroupName groupName;
 
     public String getName() {
         return name;
     }
 
-    public String getFaculty() {
-        return faculty;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getGroup() {
-        return group;
+
+    public void setSubject(Category category, int grade) {
     }
 
-    public int getWarCraftGrade() {
-        return warCraftGrade;
+    public FacultyName getFacultyName() {
+        return facultyName;
     }
 
-    public Student(String name, String faculty, String group, int warCraftGrade) throws GradeException{
-        if (warCraftGrade < 0 || warCraftGrade > 10)
-            throw new GradeException("Wrong grade");
-            this.warCraftGrade = warCraftGrade;
-            this.name = name;
-            this.faculty = faculty;
-            this.group = group;
+    public void setFacultyName(FacultyName facultyName) {
+        this.facultyName = facultyName;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return warCraftGrade == student.warCraftGrade && Objects.equals(name, student.name);
+    public GroupName getGroupName() {
+        return groupName;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, warCraftGrade);
+    public void setGroupName(GroupName groupName) {
+        this.groupName = groupName;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", warCraftGrade=" + warCraftGrade +
-                '}';
+    public static class Builder {
+        private final Student newStudent;
+
+        public Builder() {
+            newStudent = new Student();
+        }
+
+        public Student.Builder name(String name) {
+            newStudent.name = name;
+            return this;
+        }
+
+        public Student.Builder subjects(Category category, int grade) {
+            newStudent.subjects = new ArrayList<>();
+            return this;
+        }
+
+        public Student.Builder facultyName(FacultyName facultyName) {
+            newStudent.facultyName = facultyName;
+            return this;
+        }
+
+        public Student.Builder groupName(GroupName groupName) {
+            newStudent.groupName = groupName;
+            return this;
+        }
+
+        public Student build() {
+            return newStudent;
+        }
+    }
+    public List<Subject> getSubjects() throws NoSubjectsException {
+        if (subjects.isEmpty()) throw new NoSubjectsException("There are no subjects in the List, please add subject");
+        return subjects;
+    }
+
+    public Subject getSubject (Category expectedCategory) throws NoSuchSubjectException, NoSubjectsException {
+        for (Subject subject : getSubjects()) {
+            if (subject.getCategory().equals(expectedCategory)){
+                return subject;
+            }
+        }
+        throw new NoSuchSubjectException("There is no such subject " + expectedCategory + "in the University" );
+    }
+
+    public void addSubject (Subject subject){
+        subjects.add(subject);
+    }
+    public double getAverageGradeForStudent () throws NoSuchStudentException, NoSubjectsException {
+        int sum = 0;
+        int numberOfMarks = 0;
+            for (Subject subject : getSubjects()){
+                sum += subject.getGrade();
+                numberOfMarks++;
+            }
+
+        if (numberOfMarks == 0) {
+            throw new NoSuchStudentException("There is no such student");
+        }
+        return (double) sum/numberOfMarks;
     }
 }
