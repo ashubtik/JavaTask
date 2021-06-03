@@ -1,6 +1,6 @@
-package collections.Necklace.Stones.Precious;
+package collections.necklace.stones.Precious;
 
-import collections.Necklace.Properties.EmeraldCut;
+import collections.necklace.properties.EmeraldCut;
 
 import java.util.Objects;
 

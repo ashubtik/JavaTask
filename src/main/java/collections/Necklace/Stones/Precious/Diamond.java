@@ -1,4 +1,4 @@
-package collections.Necklace.Stones.Precious;
+package collections.necklace.stones.Precious;
 
 import java.util.Objects;
 

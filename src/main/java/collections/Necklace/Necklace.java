@@ -1,7 +1,7 @@
-package collections.Necklace;
+package collections.necklace;
 
-import collections.Necklace.Stones.Precious.PreciousStones;
-import collections.Necklace.Stones.Stones;
+import collections.necklace.stones.Precious.PreciousStones;
+import collections.necklace.stones.Stones;
 
 import java.util.ArrayList;
 import java.util.List;

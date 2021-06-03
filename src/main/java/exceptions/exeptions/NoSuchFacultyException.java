@@ -1,6 +1,6 @@
 package exceptions.exeptions;
 
-public class NoSuchFacultyException extends Exception{
+public class NoSuchFacultyException extends Exception {
     public NoSuchFacultyException() {
     }
 

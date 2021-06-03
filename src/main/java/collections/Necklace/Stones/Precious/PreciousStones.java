@@ -1,6 +1,6 @@
-package collections.Necklace.Stones.Precious;
+package collections.necklace.stones.Precious;
 
-import collections.Necklace.Stones.Stones;
+import collections.necklace.stones.Stones;
 
 import java.util.Objects;
 

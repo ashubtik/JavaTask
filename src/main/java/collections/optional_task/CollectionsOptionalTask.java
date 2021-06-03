@@ -1,4 +1,4 @@
-package collections.OptionalTask;
+package collections.optional_task;
 
 import java.io.File;
 import java.io.FileNotFoundException;

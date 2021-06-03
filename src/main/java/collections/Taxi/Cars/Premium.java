@@ -1,6 +1,6 @@
-package collections.Taxi.Cars;
+package collections.taxi.cars;
 
-import collections.Taxi.Properties.CarBody;
+import collections.taxi.properties.CarBody;
 
 import java.util.Objects;
 

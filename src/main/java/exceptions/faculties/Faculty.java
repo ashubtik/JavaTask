@@ -1,9 +1,13 @@
 package exceptions.faculties;
 
-import exceptions.Student;
-import exceptions.exeptions.*;
+import exceptions.exeptions.NoGroupsException;
+import exceptions.exeptions.NoStudentsException;
+import exceptions.exeptions.NoSubjectsException;
+import exceptions.exeptions.NoSuchGroupException;
 import exceptions.groups.Group;
 import exceptions.groups.GroupName;
+import exceptions.student.Student;
+import exceptions.subjects.Category;
 import exceptions.subjects.Subject;
 
 import java.util.ArrayList;
@@ -11,7 +15,7 @@ import java.util.List;
 
 public class Faculty {
     private final FacultyName facultyName;
-    private List<Group> groups;
+    private final List<Group> groups;
 
     public Faculty(FacultyName facultyName) {
         this.facultyName = facultyName;
@@ -22,37 +26,47 @@ public class Faculty {
         return facultyName;
     }
 
-    public Group getGroup (GroupName expectedGroup) throws NoGroupsException, NoSuchGroupException {
+    public Group getGroup(GroupName expectedGroup) throws NoGroupsException, NoSuchGroupException {
         for (Group group : getGroups()) {
-            if (group.getGroupName().equals(expectedGroup)){
+            if (group.getGroupName().equals(expectedGroup)) {
                 return group;
             }
         }
         throw new NoSuchGroupException("There are only 4 groups in the University");
     }
-    public void addGroup (Group group){
+
+    public void addGroup(Group group) {
         groups.add(group);
     }
 
-    public List<Group> getGroups () throws NoGroupsException {
+    public List<Group> getGroups() throws NoGroupsException {
         if (groups.isEmpty()) throw new NoGroupsException("There are no students in the group");
         return groups;
     }
 
-    public double getAverageGradeForFaculty () throws NoStudentsException, NoSubjectsException, NoGroupsException {
+    public double getAverageGrade() throws NoSubjectsException, NoGroupsException, NoStudentsException {
+        return getAverageGrade(null);
+    }
+
+    public double getAverageGrade(Category category) throws NoStudentsException, NoSubjectsException, NoGroupsException {
         int sum = 0;
         int numberOfMarks = 0;
         for (Group group : getGroups()) {
-            for (Student student : group.getStudents()){
-                for (Subject subject : student.getSubjects()){
-                    sum += subject.getGrade();
-                    numberOfMarks++;
+            for (Student student : group.getStudents()) {
+                for (Subject subject : student.getSubjects()) {
+                    if (category == null) {
+                        sum += subject.getGrade();
+                        numberOfMarks++;
+                    } else if (subject.getCategory().equals(category)) {
+                        sum += subject.getGrade();
+                        numberOfMarks++;
+                    }
                 }
             }
-    }
-        if (numberOfMarks == 0) {
-            throw new ArithmeticException("Division by 0");
         }
-        return (double) sum/numberOfMarks;
-}
+        if (numberOfMarks == 0) {
+            throw new NoSubjectsException("There are no subjects in the List, please add subject");
+        }
+        return (double) sum / numberOfMarks;
+    }
 }

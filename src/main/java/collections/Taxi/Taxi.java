@@ -1,7 +1,7 @@
-package collections.Taxi;
+package collections.taxi;
 
-import collections.Taxi.Cars.Car;
-import collections.Taxi.Cars.Premium;
+import collections.taxi.cars.Car;
+import collections.taxi.cars.Premium;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package exceptions.exeptions;
 
-public class NoSuchGroupException extends Exception{
+public class NoSuchGroupException extends Exception {
     public NoSuchGroupException() {
     }
 

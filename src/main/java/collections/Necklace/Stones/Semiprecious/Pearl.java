@@ -1,6 +1,6 @@
-package collections.Necklace.Stones.Semiprecious;
+package collections.necklace.stones.Semiprecious;
 
-import collections.Necklace.Properties.PearlColor;
+import collections.necklace.properties.PearlColor;
 
 import java.util.Objects;
 

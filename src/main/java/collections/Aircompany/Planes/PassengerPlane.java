@@ -1,4 +1,4 @@
-package collections.Aircompany.Planes;
+package collections.aircompany.planes;
 
 import java.util.Objects;
 

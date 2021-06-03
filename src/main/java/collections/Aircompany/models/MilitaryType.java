@@ -1,4 +1,4 @@
-package collections.Aircompany.models;
+package collections.aircompany.models;
 
 public enum MilitaryType {
     FIGHTER, BOMBER, TRANSPORT

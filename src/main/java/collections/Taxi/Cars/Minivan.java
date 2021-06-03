@@ -1,4 +1,4 @@
-package collections.Taxi.Cars;
+package collections.taxi.cars;
 
 import java.util.Objects;
 

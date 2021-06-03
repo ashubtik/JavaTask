@@ -1,6 +1,6 @@
-package collections.Aircompany.Planes;
+package collections.aircompany.planes;
 
-import collections.Aircompany.models.MilitaryType;
+import collections.aircompany.models.MilitaryType;
 
 import java.util.Objects;
 

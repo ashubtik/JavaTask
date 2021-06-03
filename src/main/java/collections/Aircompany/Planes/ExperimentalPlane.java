@@ -1,6 +1,6 @@
-package collections.Aircompany.Planes;
+package collections.aircompany.planes;
 
-import collections.Aircompany.models.ClassificationLevel;
+import collections.aircompany.models.ClassificationLevel;
 
 import java.util.Objects;
 

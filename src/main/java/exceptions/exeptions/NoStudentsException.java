@@ -1,6 +1,6 @@
 package exceptions.exeptions;
 
-public class NoStudentsException extends Exception{
+public class NoStudentsException extends Exception {
     public NoStudentsException() {
     }
 

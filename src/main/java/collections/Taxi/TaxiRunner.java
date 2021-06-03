@@ -1,11 +1,11 @@
-package collections.Taxi;
+package collections.taxi;
 
-import collections.Taxi.Cars.Car;
-import collections.Taxi.Cars.Minivan;
-import collections.Taxi.Cars.Premium;
-import collections.Taxi.Cars.Sedan;
-import collections.Taxi.Properties.CarBody;
-import collections.Taxi.Properties.Coverage;
+import collections.taxi.cars.Car;
+import collections.taxi.cars.Minivan;
+import collections.taxi.cars.Premium;
+import collections.taxi.cars.Sedan;
+import collections.taxi.properties.CarBody;
+import collections.taxi.properties.Coverage;
 
 import java.util.Arrays;
 import java.util.List;

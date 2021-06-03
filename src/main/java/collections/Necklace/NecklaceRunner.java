@@ -1,11 +1,11 @@
-package collections.Necklace;
+package collections.necklace;
 
-import collections.Necklace.Properties.EmeraldCut;
-import collections.Necklace.Properties.PearlColor;
-import collections.Necklace.Stones.Precious.Diamond;
-import collections.Necklace.Stones.Precious.Emerald;
-import collections.Necklace.Stones.Semiprecious.Pearl;
-import collections.Necklace.Stones.Stones;
+import collections.necklace.properties.EmeraldCut;
+import collections.necklace.properties.PearlColor;
+import collections.necklace.stones.Precious.Diamond;
+import collections.necklace.stones.Precious.Emerald;
+import collections.necklace.stones.Semiprecious.Pearl;
+import collections.necklace.stones.Stones;
 
 import java.util.Arrays;
 import java.util.List;

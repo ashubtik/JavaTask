@@ -1,4 +1,4 @@
-package collections.Necklace.Properties;
+package collections.necklace.properties;
 
 public enum PearlColor {
     BLACK, WHITE

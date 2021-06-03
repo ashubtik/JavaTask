@@ -1,9 +1,9 @@
-package collections.Aircompany;
+package collections.aircompany;
 
-import collections.Aircompany.Planes.MilitaryPlane;
-import collections.Aircompany.Planes.PassengerPlane;
-import collections.Aircompany.Planes.Plane;
-import collections.Aircompany.models.MilitaryType;
+import collections.aircompany.models.MilitaryType;
+import collections.aircompany.planes.MilitaryPlane;
+import collections.aircompany.planes.PassengerPlane;
+import collections.aircompany.planes.Plane;
 
 import java.util.Arrays;
 import java.util.List;

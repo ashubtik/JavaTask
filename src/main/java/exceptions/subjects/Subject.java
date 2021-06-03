@@ -1,13 +1,10 @@
 package exceptions.subjects;
 
-import exceptions.Student;
 import exceptions.exeptions.MarkOutOfBoundException;
-
-import java.util.List;
 
 public class Subject {
     private final Category category;
-    public int grade;
+    private final int grade;
 
 
     public Subject(Category category, int grade) throws MarkOutOfBoundException {
