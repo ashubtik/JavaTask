@@ -47,10 +47,7 @@ public class University {
             for (Group group : faculty.getGroups()) {
                 for (Student student : group.getStudents()) {
                     for (Subject subject : student.getSubjects()) {
-                        if (category == null) {
-                            sum += subject.getGrade();
-                            numberOfMarks++;
-                        } else if (subject.getCategory().equals(category)) {
+                        if (category == null || subject.getCategory().equals(category)) {
                             sum += subject.getGrade();
                             numberOfMarks++;
                         }

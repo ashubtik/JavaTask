@@ -7,7 +7,6 @@ import exceptions.groups.Group;
 import exceptions.groups.GroupName;
 import exceptions.student.Student;
 import exceptions.subjects.Category;
-import exceptions.subjects.Subject;
 import exceptions.university.University;
 
 public class UniversityMain {
@@ -33,9 +32,6 @@ public class UniversityMain {
                 .subjects(Category.WarCraft, 7)
                 .build();
         baratheons.addStudent(petyr);
-        petyr.addSubject(new Subject(Category.WarCraft, 7));
-        petyr.addSubject(new Subject(Category.IntrigueArt, 10));
-        petyr.addSubject(new Subject(Category.PoisonSubject, 10));
 
         Student geoffrey = Student.builder()
                 .name("Geoffrey Baratheon")
@@ -44,9 +40,6 @@ public class UniversityMain {
                 .subjects(Category.WarCraft, 3)
                 .build();
         baratheons.addStudent(geoffrey);
-        geoffrey.addSubject(new Subject(Category.WarCraft, 3));
-        geoffrey.addSubject(new Subject(Category.PoisonSubject, 10));
-        geoffrey.addSubject(new Subject(Category.IntrigueArt, 8));
 
         Student barristan = Student.builder()
                 .name("Barristan Selmy")
@@ -55,9 +48,6 @@ public class UniversityMain {
                 .subjects(Category.WarCraft, 10)
                 .build();
         targariens.addStudent(barristan);
-        barristan.addSubject(new Subject(Category.WarCraft, 10));
-        barristan.addSubject(new Subject(Category.DragonSubject, 3));
-        barristan.addSubject(new Subject(Category.TreasonArt, 2));
 
         Student ned = Student.builder()
                 .name("Eddard Stark")
@@ -65,25 +55,21 @@ public class UniversityMain {
                 .subjects(Category.WarCraft, 8)
                 .build();
         starks.addStudent(ned);
-        ned.addSubject(new Subject(Category.DecapitationSubject, 10));
-        ned.addSubject(new Subject(Category.WarCraft, 8));
 
-        Student tywin = new Student.Builder()
+        Student tywin = Student.builder()
                 .name("Tywin Lannister")
                 .subjects(Category.WealthSubject, 10)
                 .subjects(Category.WarCraft, 10)
                 .build();
         lannisters.addStudent(tywin);
-        tywin.addSubject(new Subject(Category.WarCraft, 10));
-        tywin.addSubject(new Subject(Category.WealthSubject, 10));
 
         double averageGradeForUniversity = university.getAverageGrade(Category.WarCraft);
         System.out.format("\n%.2f", averageGradeForUniversity);
 
-        double averageGradeForFaculty = intrigueFaculty.getAverageGrade();
+        double averageGradeForFaculty = intrigueFaculty.getAverageGrade(Category.IntrigueArt);
         System.out.format("\n%.2f", averageGradeForFaculty);
 
-        double averageGradeForGroup = baratheons.getAverageGrade(Category.PoisonSubject);
+        double averageGradeForGroup = baratheons.getAverageGrade();
         System.out.format("\n%.2f", averageGradeForGroup);
 
         double averageGradeForStudent = petyr.getAverageGrade();

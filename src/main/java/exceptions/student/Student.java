@@ -1,5 +1,6 @@
 package exceptions.student;
 
+import exceptions.exeptions.MarkOutOfBoundException;
 import exceptions.exeptions.NoSubjectsException;
 import exceptions.exeptions.NoSuchSubjectException;
 import exceptions.subjects.Category;
@@ -11,6 +12,15 @@ import java.util.List;
 public class Student {
     private String name;
     private List<Subject> subjects;
+
+    private Student() {
+
+    }
+
+    public Student(String name) {
+        this.name = name;
+        this.subjects = new ArrayList<>();
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -46,12 +56,9 @@ public class Student {
         int sum = 0;
         int numberOfMarks = 0;
         for (Subject subject : getSubjects()) {
-            if (category == null) {
+            if (category == null || subject.getCategory().equals(category)) {
                 sum += subject.getGrade();
                 numberOfMarks++;
-            } else if (subject.getCategory().equals(category)) {
-                sum += subject.getGrade();
-                numberOfMarks = 1;
             }
         }
         if (numberOfMarks == 0) {
@@ -61,24 +68,32 @@ public class Student {
     }
 
     public static class Builder {
-        private final Student newStudent;
+        private String name;
+        private List<Subject> subjects;
+
+        public Builder(String name) {
+            this.name = name;
+
+        }
 
         public Builder() {
-            newStudent = new Student();
+            subjects = new ArrayList<>();
         }
 
         public Student.Builder name(String name) {
-            newStudent.name = name;
+            this.name = name;
             return this;
         }
 
-        public Student.Builder subjects(Category category, int grade) {
-            newStudent.subjects = new ArrayList<>();
+        public Student.Builder subjects(Category category, int grade) throws MarkOutOfBoundException {
+            subjects.add(new Subject(category, grade));
             return this;
         }
 
         public Student build() {
-            return newStudent;
+            Student student = new Student(name);
+            subjects.forEach(student::addSubject);
+            return student;
         }
     }
 }

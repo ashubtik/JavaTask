@@ -3,14 +3,22 @@ package threads.parking;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class CarPlace extends Place {
+public class CarPlace {
     private final int PlaceNumber;
+    private volatile boolean occupied;
+
+    public boolean isOccupied() {
+        return occupied;
+    }
+
+    public void takePlace(boolean occupied) {
+        this.occupied = occupied;
+    }
 
     public CarPlace(int placeNumber) {
         this.PlaceNumber = placeNumber;
     }
 
-    @Override
     public void standing() {
         try {
             TimeUnit.SECONDS.sleep(new Random().nextInt(30));

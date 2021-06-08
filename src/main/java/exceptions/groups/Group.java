@@ -50,10 +50,7 @@ public class Group {
         int numberOfMarks = 0;
         for (Student student : getStudents()) {
             for (Subject subject : student.getSubjects()) {
-                if (category == null) {
-                    sum += subject.getGrade();
-                    numberOfMarks++;
-                } else if (subject.getCategory().equals(category)) {
+                if (category == null || subject.getCategory().equals(category)) {
                     sum += subject.getGrade();
                     numberOfMarks++;
                 }
