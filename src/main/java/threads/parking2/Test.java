@@ -6,7 +6,6 @@ import java.util.concurrent.BlockingQueue;
 public class Test {
     public static void main(String[] args) {
         BlockingQueue<Boolean> bq = new ArrayBlockingQueue<>(10);
-        //Start 4 stops and 3 pick-up threads
         for (int i = 1; i < 51; i++) {
             new Producer(i, bq).start();
         }
