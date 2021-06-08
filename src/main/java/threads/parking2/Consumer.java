@@ -5,7 +5,6 @@ import threads.car.Car;
 import java.util.concurrent.BlockingQueue;
 
 public class Consumer extends Thread{
-    //Car storage
     private BlockingQueue<Boolean> bq;
     private int car;
 
@@ -16,7 +15,7 @@ public class Consumer extends Thread{
     }
     public void run() {
         try {
-            bq.take();//If the garage is empty, the exit will be blocked
+            bq.take();
             System.out.println("A car was successfully taken out");
         } catch (InterruptedException e) {
 
